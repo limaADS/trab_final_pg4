@@ -37,6 +37,8 @@ public class UsuarioDAO {
 //            pstmt.setInt(5, usuario.getStatus());
             pstmt.execute();
             pstmt.close();
+//            System.out.println("Metodo de inserir ");
+
             return true;
 
         } catch (Exception e) {

@@ -6,24 +6,21 @@
 package Controle;
 
 import DAO.UsuarioDAO;
-import Modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author 2017000879
  */
-public class UsuarioControle extends HttpServlet {
+public class Usuario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,14 +30,10 @@ public class UsuarioControle extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
-     * @throws java.sql.SQLException
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
-        
-//            response.sendRedirect("./Teste.jsp");
-//            out.print("Teste -- Lucas Lima");
-            String metodo = request.getParameter("metodo");
+        String metodo = request.getParameter("metodo");
 //            out.print(metodo);
 
 //            Usuario usuario = new Usuario(request);
@@ -53,16 +46,15 @@ public class UsuarioControle extends HttpServlet {
 //            out.print(usuario.getNome_usuario());
 //            out.print("Lucas Lima --- Teste");
             if (metodo.equals("inserir")) {
-                System.out.println("\n\n\n\n\nVEIOP AUO");
-                Usuario usuario = new Usuario();
+                System.out.println("VEIOP AUO");
+                Modelo.Usuario usuario = new Modelo.Usuario();
                 String nome_usuario = request.getParameter("nome_usuario");
                 usuario.setNome_usuario(nome_usuario);
                 if (dao.inserir(usuario)) {
 //pr = pdao.selectCompleto(pr);
                 }
             }
-        }
-    
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -79,7 +71,7 @@ public class UsuarioControle extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioControle.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -97,7 +89,7 @@ public class UsuarioControle extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioControle.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Usuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

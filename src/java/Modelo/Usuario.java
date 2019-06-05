@@ -36,6 +36,11 @@ public class Usuario {
         this.endereco = endereco;
     }
 
+    public Usuario() {
+    }
+    
+    
+
     public Usuario(HttpServletRequest request) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

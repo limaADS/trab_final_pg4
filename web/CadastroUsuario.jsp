@@ -17,15 +17,14 @@
         <form action="UsuarioControle?metodo=inserir" method="post">
             <label> Nome: </label>
             <input type="text" name="nome_usuario" /><br>
-<!--            <label> Data de Nascimento: </label>
-            <input type="text" name="nascimento" /><br>
-            <label> Endereço: </label>
-            <input type="text" name="endereco" /><br>
-            <label> Cidade: </label>
-            <input type="text" name="cidade" /><br>
-            <label> Status </label>
-            <input type="text" name="status" /><br>-->
-
+            <!--            <label> Data de Nascimento: </label>
+                        <input type="text" name="nascimento" /><br>
+                        <label> Endereço: </label>
+                        <input type="text" name="endereco" /><br>
+                        <label> Cidade: </label>
+                        <input type="text" name="cidade" /><br>
+                        <label> Status </label>
+                        <input type="text" name="status" /><br>-->
             <br>
             <input type="submit" value="Enviar">
         </form>
