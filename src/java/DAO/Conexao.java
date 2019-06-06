@@ -17,7 +17,7 @@ public class Conexao {
         
         try {
             Class.forName("org.postgresql.Driver");
-            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/loja", "postgres", "ciet");
+            return DriverManager.getConnection("jdbc:postgresql://localhost:5432/farmacia", "postgres", "ciet");
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
             return null;

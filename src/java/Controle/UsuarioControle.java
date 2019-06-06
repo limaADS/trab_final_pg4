@@ -37,32 +37,51 @@ public class UsuarioControle extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
-        
+
 //            response.sendRedirect("./Teste.jsp");
 //            out.print("Teste -- Lucas Lima");
-            String metodo = request.getParameter("metodo");
+        String metodo = request.getParameter("metodo");
 //            out.print(metodo);
 
-//            Usuario usuario = new Usuario(request);
-            UsuarioDAO dao = new UsuarioDAO();
-           
+        Usuario usuario = new Usuario();
+        UsuarioDAO dao = new UsuarioDAO();
 
 //            Usuario usuario = new Usuario(null);
-//            usuario.setNome_usuario(metodo);
-//            out.print(usuario.getNome_usuario());
-//            out.print(usuario.getNome_usuario());
-//            out.print("Lucas Lima --- Teste");
-            if (metodo.equals("inserir")) {
-                System.out.println("\n\n\n\n\nVEIOP AUO");
-                Usuario usuario = new Usuario();
-                String nome_usuario = request.getParameter("nome_usuario");
-                usuario.setNome_usuario(nome_usuario);
+//        usuario.setNome_usuario(metodo);
+        
+        if (metodo.equals("inserir")) {
+            String nome_usuario = request.getParameter("nome_usuario");
+            String data_nascimento = request.getParameter("data_nascimento");
+            String rg = request.getParameter("rg");
+            String cpf = request.getParameter("cpf");
+            String endereco = request.getParameter("endereco");
+            String email = request.getParameter("email");
+            String telefone = request.getParameter("telefone");
+            String sexo = request.getParameter("sexo");
+            //String categoria = request.getParameter("categoria");
+            String senha = request.getParameter("senha");
+            String senha2 = request.getParameter("senha2");
+            
+            usuario.setNome_usuario(nome_usuario);
+            usuario.setRg(rg);
+            usuario.setCpf(cpf);
+            usuario.setCategoria("cliente");
+            usuario.setEndereco(endereco);
+            usuario.setEmail(email);
+            usuario.setTelefone(telefone);
+            usuario.setSexo(sexo);
+            usuario.setAtivo(1);
+            usuario.setSenha(senha);
+            usuario.setData_nascimento(data_nascimento);
+            
+            if (true) {
                 if (dao.inserir(usuario)) {
-//pr = pdao.selectCompleto(pr);
+                    //pr = pdao.selectCompleto(pr);
                 }
             }
+
         }
-    
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
