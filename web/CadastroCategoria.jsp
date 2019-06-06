@@ -20,7 +20,7 @@
         <br>
         <div class="row">
             <div class="col s4 offset-l4 card-content center" id="card_Cad_Usuario" align="center">
-                <form class="col s8" action="CategoriaControle?metodo=inserir">
+                <form class="col s8" action="CategoriaControle?metodo=inserir" method="post">
                     <h4>Cadastro da Categoria</h4>
                     <div class="row">
                         <div class="input-field col s12">

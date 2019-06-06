@@ -29,7 +29,7 @@ public class CategoriaDAO {
 
     public boolean inserir(Categoria categoria) throws SQLException {
         try {
-            PreparedStatement pstmt = conexao.prepareStatement("insert into usuario(id_categoria, nome_categoria, decricao, ativo)"
+            PreparedStatement pstmt = conexao.prepareStatement("insert into categoria(id_categoria, nome_categoria, descricao, ativo)"
                     + " values(default,?,?,?);");
 
             pstmt.setString(1, categoria.getNome_categoria());

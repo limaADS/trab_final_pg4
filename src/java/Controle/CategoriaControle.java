@@ -38,11 +38,18 @@ public class CategoriaControle extends HttpServlet {
         Categoria categoria = new Categoria();
         CategoriaDAO dao = new CategoriaDAO();
         String metodo = request.getParameter("metodo");
-
+        System.out.println(metodo);
         if (metodo.equals("inserir")) {
             String descricao = request.getParameter("descricao");
             String nome_categoria = request.getParameter("nome_categoria");
-            dao.inserir(categoria);
+
+            categoria.setNome_categoria(nome_categoria);
+            categoria.setDescricao(descricao);
+            categoria.setAtivo(1);
+            System.out.println("ANTES DO DAO.INSERIR");
+            if (dao.inserir(categoria)) {
+//                response.sendRedirect("./index.html");
+            }
         }
     }
 
