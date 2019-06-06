@@ -1,40 +1,24 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-              rel="stylesheet">
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"
-              media="screen,projection" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script type="text/javascript" src="js/materialize.min.js"></script>
-    </head>
+        <jsp:include page="./Header.jsp"></jsp:include>
+        </head>
 
-    <body>
-        <nav class="blue">
-            <div class="nav-wrapper">
-                <a href="#" class="brand-logo center">Farma Vida</a>
-                <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="sass.html"></a></li>
-                    <!--                 <li><a href="badges.html">Components</a></li> -->
-                    <!--                 <li><a href="collapsible.html">JavaScript</a></li> -->
-                </ul>
-            </div>
-        </nav>
-
-
+        <body>
+        <jsp:include page="nav.jsp"/>
         <br>
         <br>
         <br>
         <div class="row">
-            <div class="col s6 offset-l3 card-content center  lighten-5" id="card_Cad_Usuario" align="center">
-                <form class="col s10" action="UsuarioControle?metodo=inserir" method="post">
-                    <h4>Cadastro de Usuário</h4>
+            <div class="col s6 offset-l3 card-content lighten-5" id="card_Cad_Usuario">
+                <form class="col s12" action="UsuarioControle?metodo=inserir" method="post">
+                    <div class="center-align"><h4>Cadastro de Usuário</h4></div>
                     <div class="row">
                         <div class="input-field col s8">
                             <input placeholder="Nome Completo" id="first_name" type="text" class="validate" name="nome_usuario">
                             <label for="nome_usuario"></label>
                         </div>
-                        <div class = "row col s4">               
+                        <div class = "col s4">               
                             <label>Data de Nascimento</label>              
                             <input type = "date" class = "datepicker" name="data_nascimento" />    
                         </div> 
