@@ -37,51 +37,37 @@
         <br>
         <form>
             <div class="row">
-                <div class="col s4 offset-l4 card-content center light-blue lighten-5" id="card_Cad_Usuario" align="center">
+                <div class="col s4 offset-l4 card-content center " id="card_Cad_Usuario" align="center">
                     <form class="col s8">
                         <h4>Cadastro do Produto</h4>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input placeholder="Nome do Produto" id="first_name" type="text" class="validate" name="nome_produto">
+                                <input placeholder="Nome do Produto" id="first_name" type="text" class="validate" name="nome_produto" required>
                                 <label for="nome_produto"></label>
                             </div>
-                            
+
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input placeholder="Descrição do Produto" id="first_name" type="text" class="validate" name="descricao">
+                                <input placeholder="Descrição do Produto" id="first_name" type="text" class="validate" name="descricao" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s4">
-                                <input placeholder="Quantidade" id="first_name" type="text" class="validate" name="quantidade">
+                                <input placeholder="Quantidade" id="first_name" type="text" class="validate" name="quantidade" required>
                                 <label for="quantidade"></label>
                             </div>
                             <div class = "row col s4">               
                                 <label>Data do Cadastro</label>              
-                                <input type = "date" class = "datepicker" name="data_cadastro" />    
+                                <input type = "date" class = "datepicker" name="data_cadastro" required/>    
                             </div> 
                             <div class="input-field col s4">
-                                <input placeholder="Preço" id="first_name" type="text" class="validate" name="preco">
+                                <input placeholder="Preço" id="first_name" type="text" class="validate" name="preco" required>
                                 <label for="preco"></label>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <select name="id_categoria">
-                                    <option value="0">Selecione o Caixa</option>
-                                    <option value="1">Dia</option>
-                                    <option value="2">Noite</option>
-                                    <option value="3">Associação</option>
-                                </select>
-                                <label for = 'id_categoria'>Categoria</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input placeholder="Ativo" id="email" type="email" class="validate" name="ativo">
-                                <label for="ativo"></label>
-                            </div>
-                        </div>
                         
+
                         <div class="row">
                             <div class="input-field col s10  right-align">
                                 <button class="waves-effect waves-light btn  blue-grey" type="submit" name="action">
@@ -114,16 +100,21 @@
             </div>
             <div class="footer-copyright">
                 <div class="container">? 2019 Instituto Federal Farroupilha - Campus
-                    S?o Vicente do Sul</div>
+                    São Vicente do Sul</div>
             </div>
         </footer>
+
+
         
+
         <script>
-            var selectC = document.querySelectorAll('.')
-            for (var i = 0; i < selectC.length; i++) {
-                M.FormSelect.init(selectC[i]);
-            }
-        </script>
-        
+                $(document).ready(function () {
+                    $('select').formSelect();
+                });
+            </script>
+
+
+
+
     </body>
 </html>

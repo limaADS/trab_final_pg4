@@ -36,51 +36,51 @@
                         <h4>Cadastro de Usuário</h4>
                         <div class="row">
                             <div class="input-field col s8">
-                                <input placeholder="Nome Completo" id="first_name" type="text" class="validate" name="nome_usuario">
+                                <input placeholder="Nome Completo" id="first_name" type="text" class="validate" name="nome_usuario" required>
                                 <label for="nome_usuario"></label>
                             </div>
                             <div class = "row col s4">               
                                 <label>Data de Nascimento</label>              
-                                <input type = "date" class = "datepicker" name="data_nascimento" />    
+                                <input type = "date" class = "datepicker" name="data_nascimento" required/>    
                             </div> 
                         </div>
                         <div class="row">
                             <div class="input-field col s4">
-                                <input placeholder="RG" id="first_name" type="text" class="validate" name="rg">
+                                <input placeholder="RG" id="first_name" type="text" class="validate" name="rg" required>
                                 <label for="rg"></label>
                             </div>
                             <div class="input-field col s4">
-                                <input placeholder="CPF" id="first_name" type="text" class="validate" name="cpf">
+                                <input placeholder="CPF" id="first_name" type="text" class="validate" name="cpf" required>
                                 <label for="cpf"></label>
                             </div>
                             <div class="input-field col s4">
-                                <input placeholder="Telefone" id="first_name" type="text" class="validate" name="telefone">
+                                <input placeholder="Telefone" id="first_name" type="text" class="validate" name="telefone" required>
                                 <label for="telefone"></label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s9">
-                                <input placeholder="Endereço" id="first_name" type="text" class="validate" name="endereco">
+                                <input placeholder="Endereço" id="first_name" type="text" class="validate" name="endereco" required>
                                 <label for="endereco"></label>
                             </div>
                             <div class="input-field col s3">
-                                <input placeholder="Sexo" id="first_name" type="text" class="validate" name="sexo">
+                                <input placeholder="Sexo" id="first_name" type="text" class="validate" name="sexo" required>
                                 <label for="sexo"></label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input placeholder="E-mail" id="email" type="email" class="validate" name="email">
+                                <input placeholder="E-mail" id="email" type="email" class="validate" name="email" required>
                                 <label for="email"></label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <input placeholder="Senha" id="password" type="password" class="validate" name="senha">
+                                <input placeholder="Senha" id="password" type="password" class="validate" name="senha" required>
                                 <label for="password"></label>
                             </div>
                             <div class="input-field col s6">
-                                <input  placeholder="Verifica Senha" id="password" type="password" class="validate">
+                                <input  placeholder="Verifica Senha" id="password" type="password" class="validate" required>
                                 <label for="password"></label>
                             </div>
                         </div>

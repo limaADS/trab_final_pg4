@@ -14,12 +14,7 @@
     </head>
 
     <body>
-        <script >
-            document.addEventListener('DOMContentLoaded', function () {
-                var elems = document.querySelectorAll('select');
-                var instances = M.FormSelect.init(elems, options);
-            });
-        </script>
+        
         <nav class="blue">
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo center">Farma Vida</a>
@@ -42,25 +37,22 @@
                         <h4>Cadastro da Categoria</h4>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input placeholder="Nome da Categoria" id="first_name" type="text" class="validate" name="nome_categoria">
-                                <label for="nome_produto"></label>
+                                <input placeholder="Nome da Categoria" id="first_name" type="text" class="validate" name="nome_categoria" required>
+                                <label for="nome_categoria"></label>
                             </div>
                             
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input placeholder="Descrição da Categoria" id="first_name" type="text" class="validate" name="descricao">
+                                <input placeholder="Descrição da Categoria" id="first_name" type="text" class="validate" name="descricao" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class = "row col s4">               
                                 <label>Data do Cadastro</label>              
-                                <input type = "date" class = "datepicker" name="data_cadastro" />    
+                                <input type = "date" class = "datepicker" name="data_cadastro" required/>    
                             </div> 
-                            <div class="input-field col s4">
-                                <input placeholder="Ativo" id="first_name" type="text" class="validate" name="ativo">
-                                <label for="ativo"></label>
-                            </div>
+                            
                         </div>
                         
                         <div class="row">
