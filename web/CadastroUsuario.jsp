@@ -113,7 +113,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col l6 s12">
-                        <h5 class="white-text">Autor: Luis Henrique Delcul</h5>
+                        <h5 class="white-text">Desenvolvedores: Lucas & Luís</h5>
 
                     </div>
 

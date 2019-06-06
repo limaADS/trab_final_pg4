@@ -38,17 +38,10 @@ public class UsuarioControle extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
 
-//            response.sendRedirect("./Teste.jsp");
-//            out.print("Teste -- Lucas Lima");
         String metodo = request.getParameter("metodo");
-//            out.print(metodo);
-
         Usuario usuario = new Usuario();
         UsuarioDAO dao = new UsuarioDAO();
 
-//            Usuario usuario = new Usuario(null);
-//        usuario.setNome_usuario(metodo);
-        
         if (metodo.equals("inserir")) {
             String nome_usuario = request.getParameter("nome_usuario");
             String data_nascimento = request.getParameter("data_nascimento");
@@ -61,7 +54,7 @@ public class UsuarioControle extends HttpServlet {
             //String categoria = request.getParameter("categoria");
             String senha = request.getParameter("senha");
             String senha2 = request.getParameter("senha2");
-            
+
             usuario.setNome_usuario(nome_usuario);
             usuario.setRg(rg);
             usuario.setCpf(cpf);
@@ -73,13 +66,19 @@ public class UsuarioControle extends HttpServlet {
             usuario.setAtivo(1);
             usuario.setSenha(senha);
             usuario.setData_nascimento(data_nascimento);
-            
-            if (true) {
+
+            if (senha.equals(senha2) && metodo.equals("inserir")) {
                 if (dao.inserir(usuario)) {
-                    //pr = pdao.selectCompleto(pr);
+                    response.sendRedirect("./index.html");
+                } else {
+                    response.sendRedirect("./index.html");
                 }
             }
 
+            if(metodo.equals("update")){
+                
+            }
+            
         }
     }
 
