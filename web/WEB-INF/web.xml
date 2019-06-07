@@ -16,6 +16,10 @@
         <servlet-name>CategoriaControle</servlet-name>
         <servlet-class>Controle.CategoriaControle</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ProdutoControle</servlet-name>
+        <servlet-class>Controle.ProdutoControle</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsuarioControle</servlet-name>
         <url-pattern>/UsuarioControle</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>CategoriaControle</servlet-name>
         <url-pattern>/CategoriaControle</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProdutoControle</servlet-name>
+        <url-pattern>/ProdutoControle</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

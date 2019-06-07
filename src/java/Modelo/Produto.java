@@ -5,10 +5,6 @@
  */
 package Modelo;
 
-/**
- *
- * @author 2017000879
- */
 public class Produto {
     private int id_produto;
     private String nome_produto;
@@ -38,6 +34,10 @@ public class Produto {
         this.id_categoria = id_categoria;
         this.data_cadastro = data_cadastro;
         this.ativo = ativo;
+    }
+
+    public Produto() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getId_produto() {
