@@ -10,8 +10,10 @@ import Modelo.Categoria;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -39,10 +41,20 @@ public class CategoriaControle extends HttpServlet {
         CategoriaDAO dao = new CategoriaDAO();
         String metodo = request.getParameter("metodo");
 //        System.out.println(metodo);
+        RequestDispatcher rd = null;
+
+        if (metodo.equals("listarTudo")) {
+            List lista = dao.listarTodas();
+            request.setAttribute("lista", lista);
+            rd = request.getRequestDispatcher("ListarCategoria.jsp");
+            //Encaminhamento
+            rd.forward(request, response);
+        }
+
         if (metodo.equals("insert")) {
             String nome_categoria = request.getParameter("nome_categoria");
             String descricao = request.getParameter("descricao");
-            
+
             categoria.setNome_categoria(nome_categoria);
             categoria.setDescricao(descricao);
             categoria.setAtivo(1);

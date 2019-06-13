@@ -9,7 +9,10 @@ import Modelo.Categoria;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -24,6 +27,21 @@ public class CategoriaDAO {
             this.conexao = Conexao.getConnection();
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
+        }
+    }
+
+    public List listarTodas() {
+        try {
+            PreparedStatement pstmt = conexao.prepareStatement("SELECT * FROM categoria;");
+            ResultSet resultado = pstmt.executeQuery();
+            List<Categoria> lista = new ArrayList<Categoria>();
+            while (resultado.next()) {
+                Categoria categoria = new Categoria(resultado);
+                lista.add(categoria);
+            }
+            return lista;
+        } catch (Exception e) {
+            return null;
         }
     }
 

@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.sql.ResultSet;
+
 public class Categoria {
     private int id_categoria;
     private String nome_categoria;
@@ -16,6 +18,10 @@ public class Categoria {
     }
 
     public Categoria() {
+    }
+
+    public Categoria(ResultSet rs) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getId_categoria() {

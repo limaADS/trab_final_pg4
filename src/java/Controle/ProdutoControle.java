@@ -17,10 +17,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Sammy Guergachi <sguergachi at gmail.com>
- */
 public class ProdutoControle extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -29,28 +25,29 @@ public class ProdutoControle extends HttpServlet {
         Produto produto = new Produto();
         ProdutoDAO dao = new ProdutoDAO();
         String metodo = request.getParameter("metodo");
-        
+        System.out.println("Antes do insert IF");
         if (metodo.equals("insert")) {
             String nome_produto = request.getParameter("nome_produto");
             String descricao = request.getParameter("descricao");
             String preco = request.getParameter("preco");
             String quantidade = request.getParameter("quantidade");
-//            String id_categoria = request.getParameter("id_categoria");
-            
+            String id_categoria = request.getParameter("id_categoria");
+            System.out.println("preco: " + preco + "\nquantidade: " + quantidade);
             produto.setNome_produto(nome_produto);
             produto.setPreco(Double.parseDouble(preco));
             produto.setDescricao(descricao);
             produto.setQuantidade(Integer.parseInt(quantidade));
-//      produto.setId_categoria(Integer.parseInt(2));
-            produto.setId_categoria(2);
+            produto.setId_categoria(Integer.parseInt(id_categoria));
             produto.setAtivo(1);
-            
-            if(dao.inserir(produto)){
-                
+            System.out.println("preco: " + preco + "\nquantidade: " + quantidade);
+            if (dao.inserir(produto)) {
+                //response.sendRedirect("./Home.html");
+                System.out.println("===== SUCESSO NO DAO.INSERIR ====");
+            } else {
+                System.out.println("===== ERRO NO DAO.INSERIR ====");
             }
         }
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col s6 offset-l3 card-content lighten-5" id="card_Cad_Usuario">
                 <form class="col s12" action="UsuarioControle?metodo=insert" method="post">
-                    <div class="center-align"><h4>Cadastro de Usuário</h4></div>
+                    <div class="center-align"><h4>Cadastre-se</h4></div>
                     <div class="row">
                         <div class="input-field col s8">
                             <input placeholder="Nome Completo" id="first_name" type="text" class="validate" name="nome_usuario">
@@ -25,7 +25,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s4">
-                            <input placeholder="RG" id="first_name" type="text" class="validate" name="rg">
+                            <input placeholder="RG" id="first_name" type="number" class="validate" name="rg">
                             <label for="rg"></label>
                         </div>
                         <div class="input-field col s4">

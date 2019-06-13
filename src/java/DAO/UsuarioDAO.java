@@ -31,7 +31,6 @@ public class UsuarioDAO {
     public boolean inserir(Usuario usuario) throws SQLException {
         try {
             PreparedStatement pstmt = conexao.prepareStatement("insert into usuario values(default,?,?,?,?,?,?,?,?,?,?,?);");
-
             pstmt.setString(1, usuario.getNome_usuario());
             pstmt.setDate(2, Date.valueOf(usuario.getData_nascimento()));
             pstmt.setString(3, usuario.getRg());
@@ -46,7 +45,6 @@ public class UsuarioDAO {
             pstmt.execute();
             pstmt.close();
             return true;
-
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
             return false;

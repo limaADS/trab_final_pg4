@@ -17,8 +17,9 @@ public class Produto {
     private int ativo;
 
     public Produto() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+   
 
     public Produto(int id_produto, String nome_produto, String descricao, double preco, int quantidade, int id_categoria, String data_cadastro, int ativo) {
         this.id_produto = id_produto;

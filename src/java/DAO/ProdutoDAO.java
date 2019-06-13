@@ -28,16 +28,19 @@ public class ProdutoDAO {
     
     public boolean inserir(Produto produto) throws SQLException {
         try {
-            PreparedStatement pstmt = conexao.prepareStatement("insert into produto values(default,?,?,?,?,?,?,?);");
+//            PreparedStatement pstmt = conexao.prepareStatement("insert into produto(id_produto, nome_produto) values(default,?);");
+            PreparedStatement pstmt = conexao.prepareStatement("insert into produto"
+                    + "(id_produto, nome_produto, descricao, preco, quantidade, ativo,id_categoria) "
+                    + "values(default,?,?,?,?,?,?);");
 
             pstmt.setString(1, produto.getNome_produto());
             pstmt.setString(2, produto.getDescricao());
             pstmt.setDouble(3, produto.getPreco());
             pstmt.setInt(4, produto.getQuantidade());
-            pstmt.setInt(5, produto.getId_categoria());
-            pstmt.setDate(6, Date.valueOf(produto.getData_cadastro()));
-            pstmt.setInt(7, produto.getAtivo());
-            
+//            pstmt.setInt(5, produto.getId_categoria());
+//            pstmt.setDate(6, Date.valueOf(produto.getData_cadastro()));
+            pstmt.setInt(5, produto.getAtivo());
+            pstmt.setInt(6, produto.getId_categoria());
             pstmt.execute();
             pstmt.close();
             return true;
