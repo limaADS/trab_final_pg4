@@ -6,6 +6,7 @@
 package Modelo;
 
 public class Produto {
+
     private int id_produto;
     private String nome_produto;
     private String descricao;
@@ -14,6 +15,10 @@ public class Produto {
     private int id_categoria;
     private String data_cadastro;
     private int ativo;
+
+    public Produto() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     public Produto(int id_produto, String nome_produto, String descricao, double preco, int quantidade, int id_categoria, String data_cadastro, int ativo) {
         this.id_produto = id_produto;
@@ -24,20 +29,6 @@ public class Produto {
         this.id_categoria = id_categoria;
         this.data_cadastro = data_cadastro;
         this.ativo = ativo;
-    }
-
-    public Produto(String nome_produto, String descricao, double preco, int quantidade, int id_categoria, String data_cadastro, int ativo) {
-        this.nome_produto = nome_produto;
-        this.descricao = descricao;
-        this.preco = preco;
-        this.quantidade = quantidade;
-        this.id_categoria = id_categoria;
-        this.data_cadastro = data_cadastro;
-        this.ativo = ativo;
-    }
-
-    public Produto() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getId_produto() {
@@ -104,8 +95,4 @@ public class Produto {
         this.ativo = ativo;
     }
 
-    
-    
-    
-    
 }

@@ -31,15 +31,12 @@ public class CategoriaDAO {
         try {
             PreparedStatement pstmt = conexao.prepareStatement("insert into categoria(id_categoria, nome_categoria, descricao, ativo)"
                     + " values(default,?,?,?);");
-
             pstmt.setString(1, categoria.getNome_categoria());
-//            pstmt.setDate(2, Date.valueOf(categoria.getData_nascimento()));
             pstmt.setString(2, categoria.getDescricao());
             pstmt.setInt(3, categoria.getAtivo());
             pstmt.execute();
             pstmt.close();
             return true;
-
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
             return false;

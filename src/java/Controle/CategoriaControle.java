@@ -38,17 +38,20 @@ public class CategoriaControle extends HttpServlet {
         Categoria categoria = new Categoria();
         CategoriaDAO dao = new CategoriaDAO();
         String metodo = request.getParameter("metodo");
-        System.out.println(metodo);
-        if (metodo.equals("inserir")) {
-            String descricao = request.getParameter("descricao");
+//        System.out.println(metodo);
+        if (metodo.equals("insert")) {
             String nome_categoria = request.getParameter("nome_categoria");
-
+            String descricao = request.getParameter("descricao");
+            
             categoria.setNome_categoria(nome_categoria);
             categoria.setDescricao(descricao);
             categoria.setAtivo(1);
-            System.out.println("ANTES DO DAO.INSERIR");
+//            System.out.println("ANTES DO DAO.INSERIR");
             if (dao.inserir(categoria)) {
-//                response.sendRedirect("./index.html");
+                System.out.println("============== EXECUTOU O INSERIR CATEGORIA =============");
+                //response.sendRedirect("./index.html");
+            } else {
+                System.out.println("\n\n\nErro no insert da categoria");
             }
         }
     }

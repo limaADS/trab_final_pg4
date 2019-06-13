@@ -1,9 +1,3 @@
-<%-- 
-    Document   : Login
-    Created on : 06/06/2019, 19:04:34
-    Author     : Sammy Guergachi <sguergachi at gmail.com>
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +6,10 @@
         <title>Farmácia</title>
     </head>
     <body>
+        <jsp:include page="./nav.jsp"/>
+        <br>
+        <br>
+        <br>
         <div class="row">
                 <div class="col s4"></div>
                 <div class="col s4 card-content center white light-5" id="card-login">

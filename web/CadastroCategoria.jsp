@@ -1,40 +1,29 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!--Import Google Icon Font-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-              rel="stylesheet">
-        <!--Import materialize.css-->
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"
-              media="screen,projection" />
-
-        <!--Let browser know website is optimized for mobile-->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <script type="text/javascript" src="js/materialize.js"></script>
+        <jsp:include page="./Header.jsp"/>
     </head>
-
     <body>
         <jsp:include page="./navAdmin.jsp"></jsp:include>
         <br>
         <br>
         <br>
         <div class="row">
-            <div class="col s4 offset-l4 card-content center" id="card_Cad_Usuario" align="center">
-                <form class="col s8" action="CategoriaControle?metodo=inserir" method="post">
-                    <h4>Cadastro da Categoria</h4>
+            <div class="col s6 offset-l3 card-content center" id="card_Cad_Usuario" align="center">
+                <form action="CategoriaControle?metodo=insert" method="post">
+                    <h4>Cadastro de Categoria</h4>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input placeholder="Nome da Categoria" id="first_name" type="text" class="validate" name="nome_categoria">
-                            <label for="nome_produto"></label>
+                            <input placeholder="Nome da Categoria" type="text" name="nome_categoria">
                         </div>  
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input placeholder="Descrição da Categoria" id="descricao" type="text" class="validate" name="descricao">
+                            <input placeholder="Descrição da Categoria" type="text" name="descricao">
                         </div>
                     </div> 
                     <div class="row">
-                        <div class="center-align">
+                        <div>
                             <div class="input-field col s3 center">
                                 <a href="#" class="btn red darken-2 ">Cancelar</a>
                             </div>
@@ -43,13 +32,10 @@
                             </div>
                         </div>
                     </div>
+                </form>
             </div>
         </div>
     </div>
-</form>
-
-
-
 </body>
 </html>
 

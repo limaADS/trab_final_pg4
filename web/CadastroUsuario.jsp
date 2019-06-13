@@ -11,7 +11,7 @@
         <br>
         <div class="row">
             <div class="col s6 offset-l3 card-content lighten-5" id="card_Cad_Usuario">
-                <form class="col s12" action="UsuarioControle?metodo=inserir" method="post">
+                <form class="col s12" action="UsuarioControle?metodo=insert" method="post">
                     <div class="center-align"><h4>Cadastro de Usuário</h4></div>
                     <div class="row">
                         <div class="input-field col s8">
@@ -43,7 +43,7 @@
                             <label for="endereco"></label>
                         </div>
                         <div class="input-field col s3">
-                            <input placeholder="Sexo" id="first_name" type="text" class="validate" name="sexo">
+                            <input placeholder="Sexo" id="first_name" type="text" value="M" class="validate" name="sexo">
                             <label for="sexo"></label>
                         </div>
                     </div>

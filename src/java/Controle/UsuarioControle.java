@@ -41,8 +41,15 @@ public class UsuarioControle extends HttpServlet {
         String metodo = request.getParameter("metodo");
         Usuario usuario = new Usuario();
         UsuarioDAO dao = new UsuarioDAO();
+        if (metodo.equals("update")) {
+
+        }
         
-        if (metodo.equals("inserir")) {
+        if (metodo.equals("delete")) {
+
+        }
+
+        if (metodo.equals("insert")) {
             String nome_usuario = request.getParameter("nome_usuario");
             String data_nascimento = request.getParameter("data_nascimento");
             String rg = request.getParameter("rg");
@@ -66,17 +73,11 @@ public class UsuarioControle extends HttpServlet {
             usuario.setAtivo(1);
             usuario.setSenha(senha);
             usuario.setData_nascimento(data_nascimento);
-
-            if (senha.equals(senha2) && metodo.equals("inserir")) {
+            if (senha.equals(senha2) && metodo.equals("insert")) {
                 if (dao.inserir(usuario)) {
                     response.sendRedirect("./index.html");
-                } 
+                }
             }
-
-            if(metodo.equals("update")){
-                
-            }
-            
         }
     }
 
