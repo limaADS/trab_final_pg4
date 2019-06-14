@@ -1,21 +1,24 @@
 package Modelo;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 
 public class Categoria {
     private int id_categoria;
     private String nome_categoria;
     private String descricao;
-    private String data_cadstro;
+    private Date data_cadastro;
     private int ativo;
 
-    public Categoria(int id_categoria, String nome_categoria, String descricao, String data_cadstro, int ativo) {
+    public Categoria(int id_categoria, String nome_categoria, String descricao, Date data_cadastro, int ativo) {
         this.id_categoria = id_categoria;
         this.nome_categoria = nome_categoria;
         this.descricao = descricao;
-        this.data_cadstro = data_cadstro;
+        this.data_cadastro = data_cadastro;
         this.ativo = ativo;
     }
+
+    
 
     public Categoria() {
     }
@@ -48,13 +51,15 @@ public class Categoria {
         this.descricao = descricao;
     }
 
-    public String getData_cadstro() {
-        return data_cadstro;
+    public Date getData_cadastro() {
+        return data_cadastro;
     }
 
-    public void setData_cadstro(String data_cadstro) {
-        this.data_cadstro = data_cadstro;
+    public void setData_cadastro(Date data_cadastro) {
+        this.data_cadastro = data_cadastro;
     }
+
+    
 
     public int getAtivo() {
         return ativo;

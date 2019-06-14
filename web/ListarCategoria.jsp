@@ -34,21 +34,18 @@
                                 <tbody>
 
                                     <%
-                                        List<Categoria> listaDeClientes = (List<Categoria>) request.getAttribute("lista");
+                                        //List<Categoria> listaDeClientes = (List<Categoria>) request.getAttribute("lista");
                                         CategoriaDAO dao = new CategoriaDAO();
                                         List<Categoria> lista = dao.listarTodas();
-
-                                        Iterator i = lista.iterator();
-                                        while (i.hasNext()) {
-                                            Categoria categoria = (Categoria) i.next();
+                                        for(Categoria categoria : lista) {
                                     %>
                                     <tr>
-                                        <td><%= categoria.getId_categoria()%></td>
-                                        <td><%= categoria.getNome_categoria()%></td>
-                                        <td><%= categoria.getDescricao()%></td>
+                                        <td><%= categoria.getId_categoria() %></td>
+                                        <td><%= categoria.getNome_categoria() %></td>
+                                        <td><%= categoria.getDescricao() %></td>
                                     </tr>
 
-                                    <% }%>
+                                    <% } %>
                                 </tbody>
                             </table>
                         </div>

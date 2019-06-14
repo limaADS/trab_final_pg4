@@ -36,11 +36,17 @@ public class CategoriaDAO {
             ResultSet resultado = pstmt.executeQuery();
             List<Categoria> lista = new ArrayList<Categoria>();
             while (resultado.next()) {
-                Categoria categoria = new Categoria(resultado);
+                Categoria categoria = new Categoria();
+                categoria.setId_categoria(resultado.getInt("id_categoria"));
+                categoria.setNome_categoria(resultado.getString("nome_categoria"));
+                categoria.setDescricao(resultado.getString("descricao"));
+//                categoria.setData_cadastro(resultado.getDate("data_cadastro"));
+//                categoria.setAtivo(resultado.getInt("ativo"));
                 lista.add(categoria);
             }
             return lista;
         } catch (Exception e) {
+            System.out.println("\n\n\n\n\n\n\n\n\naaaaaaaaaaaaaaaaaaaaaaaa");
             return null;
         }
     }
