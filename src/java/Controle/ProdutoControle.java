@@ -10,8 +10,10 @@ import Modelo.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -26,6 +28,22 @@ public class ProdutoControle extends HttpServlet {
         ProdutoDAO dao = new ProdutoDAO();
         String metodo = request.getParameter("metodo");
         System.out.println("Antes do insert IF");
+        RequestDispatcher rd = null;
+
+        if (metodo.equals("vai_editar_produto")) {
+            String id_produto = request.getParameter("id");
+            System.out.println("ID RECEBIDO NO vai_editar_produto: " + id_produto);
+            response.sendRedirect("./EditarProduto.jsp?id=" + id_produto + "");
+
+        }
+
+        if (metodo.equals("listarTudo")) {
+            List lista = dao.listarTodas();
+            request.setAttribute("lista", lista);
+            rd = request.getRequestDispatcher(".jsp");
+            //Encaminhamento
+            rd.forward(request, response);
+        }
         if (metodo.equals("insert")) {
             String nome_produto = request.getParameter("nome_produto");
             String descricao = request.getParameter("descricao");
@@ -46,6 +64,21 @@ public class ProdutoControle extends HttpServlet {
             } else {
                 System.out.println("===== ERRO NO DAO.INSERIR ====");
             }
+        }
+
+        if (metodo.equals("editar")) {
+            System.out.println("ESTOU NA EDITAR - UHULLL LINA SEGUNDE-FEIRA!!");
+            int id = Integer.parseInt(request.getParameter("id_produto"));
+//            System.out.println("\n\n\n\n\n aaaa "+id);
+//            request.getSession().setAttribute("id", id);
+//            List lista = dao.pesquisaPorID("id_produto");
+            String preco = request.getParameter("id_produto");
+            System.out.println("VAMOS LA:" + preco);
+//         request.setAttribute("listaDeProdutos", lista);
+            //request.setAttribute(metodo, id);
+            //System.out.println("Id no servlet"+id);
+            rd = request.getRequestDispatcher("EditarProduto.jsp");
+            rd.forward(request, response);
         }
 
     }

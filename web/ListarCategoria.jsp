@@ -34,7 +34,7 @@
                                 <tbody>
 
                                     <%
-                                        //List<Categoria> listaDeClientes = (List<Categoria>) request.getAttribute("lista");
+                                        List<Categoria> listaDeClientes = (List<Categoria>) request.getAttribute("lista");
                                         CategoriaDAO dao = new CategoriaDAO();
                                         List<Categoria> lista = dao.listarTodas();
                                         for(Categoria categoria : lista) {

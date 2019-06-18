@@ -5,6 +5,8 @@
  */
 package Modelo;
 
+import java.sql.Date;
+
 public class Produto {
 
     private int id_produto;
@@ -13,23 +15,11 @@ public class Produto {
     private double preco;
     private int quantidade;
     private int id_categoria;
-    private String data_cadastro;
+    private Date data_cadastro;
     private int ativo;
+    private String nome_categoria;
 
     public Produto() {
-    }
-
-   
-
-    public Produto(int id_produto, String nome_produto, String descricao, double preco, int quantidade, int id_categoria, String data_cadastro, int ativo) {
-        this.id_produto = id_produto;
-        this.nome_produto = nome_produto;
-        this.descricao = descricao;
-        this.preco = preco;
-        this.quantidade = quantidade;
-        this.id_categoria = id_categoria;
-        this.data_cadastro = data_cadastro;
-        this.ativo = ativo;
     }
 
     public int getId_produto() {
@@ -80,11 +70,11 @@ public class Produto {
         this.id_categoria = id_categoria;
     }
 
-    public String getData_cadastro() {
+    public Date getData_cadastro() {
         return data_cadastro;
     }
 
-    public void setData_cadastro(String data_cadastro) {
+    public void setData_cadastro(Date data_cadastro) {
         this.data_cadastro = data_cadastro;
     }
 
@@ -94,6 +84,26 @@ public class Produto {
 
     public void setAtivo(int ativo) {
         this.ativo = ativo;
+    }
+
+    public String getNome_categoria() {
+        return nome_categoria;
+    }
+
+    public void setNome_categoria(String nome_categoria) {
+        this.nome_categoria = nome_categoria;
+    }
+
+    public Produto(int id_produto, String nome_produto, String descricao, double preco, int quantidade, int id_categoria, Date data_cadastro, int ativo, String nome_categoria) {
+        this.id_produto = id_produto;
+        this.nome_produto = nome_produto;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.quantidade = quantidade;
+        this.id_categoria = id_categoria;
+        this.data_cadastro = data_cadastro;
+        this.ativo = ativo;
+        this.nome_categoria = nome_categoria;
     }
 
 }

@@ -38,6 +38,9 @@ public class UsuarioControle extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
 
+        request.setCharacterEncoding("UTF-8");
+        HttpSession session = request.getSession();
+
         String metodo = request.getParameter("metodo");
         Usuario usuario = new Usuario();
         UsuarioDAO dao = new UsuarioDAO();
@@ -48,6 +51,22 @@ public class UsuarioControle extends HttpServlet {
 //        if (metodo.equals("delete")) {
 //
 //        }
+
+        if (metodo.equals("login")) {
+            String usuario_login = request.getParameter("usuario_login");
+            String senha = request.getParameter("senha");
+            usuario = dao.login(usuario_login, senha);
+            try {
+                if (usuario != null) {
+                    session.setAttribute("nome_usuario", usuario.getNome_usuario());
+                    response.sendRedirect("./home.jsp");
+                } else {
+                    response.sendRedirect("./login.jsp");
+                }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
         if (metodo.equals("insert")) {
             String nome_usuario = request.getParameter("nome_usuario");

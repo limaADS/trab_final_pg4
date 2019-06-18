@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO;
 
 import java.sql.Connection;
@@ -10,12 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import Modelo.Usuario;
 import java.sql.Date;
+import java.sql.ResultSet;
 //import java.util.Date;
 
-/**
- *
- * @author 2017000879
- */
 public class UsuarioDAO {
 
     private Connection conexao;
@@ -25,6 +17,35 @@ public class UsuarioDAO {
             this.conexao = Conexao.getConnection();
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
+        }
+    }
+
+    public Usuario login(String usuario_login, String senha) {
+        Usuario usuario = new Usuario();
+        try {
+            ResultSet resultado;
+            PreparedStatement pstmt = conexao.prepareStatement("select *  from usuario WHERE email= ? and "
+                    + "senha= ? ;");
+            pstmt.setString(1, usuario_login);
+            pstmt.setString(2, senha);
+            resultado = pstmt.executeQuery();
+            resultado.next();
+            usuario.setNome_usuario(resultado.getString("id_usuario"));
+            usuario.setNome_usuario(resultado.getString("nome_usuario"));
+            usuario.setNome_usuario(resultado.getString("data_nascimento"));
+            usuario.setNome_usuario(resultado.getString("rg"));
+            usuario.setNome_usuario(resultado.getString("cpf"));
+            usuario.setNome_usuario(resultado.getString("endereco"));
+            usuario.setNome_usuario(resultado.getString("email"));
+            usuario.setNome_usuario(resultado.getString("telefone"));
+            usuario.setNome_usuario(resultado.getString("sexo"));
+            usuario.setCategoria(resultado.getString("categoria"));
+//            System.out.println("Cadastro: " + usuario.getNome_usuario());
+            return usuario;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            System.out.println("erro no try dao");
+            return null;
         }
     }
 
@@ -51,6 +72,7 @@ public class UsuarioDAO {
         }
 
     }
+
     public boolean update(Usuario usuario) throws SQLException {
         try {
             PreparedStatement pstmt = conexao.prepareStatement("");

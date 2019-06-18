@@ -18,8 +18,6 @@ public class Categoria {
         this.ativo = ativo;
     }
 
-    
-
     public Categoria() {
     }
 
