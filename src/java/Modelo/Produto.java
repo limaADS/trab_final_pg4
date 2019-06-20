@@ -18,10 +18,34 @@ public class Produto {
     private Date data_cadastro;
     private int ativo;
     private String nome_categoria;
+    private String foto;
 
     public Produto() {
     }
 
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public Produto(int id_produto, String nome_produto, String descricao, double preco, int quantidade, int id_categoria, Date data_cadastro, int ativo, String nome_categoria, String foto) {
+        this.id_produto = id_produto;
+        this.nome_produto = nome_produto;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.quantidade = quantidade;
+        this.id_categoria = id_categoria;
+        this.data_cadastro = data_cadastro;
+        this.ativo = ativo;
+        this.nome_categoria = nome_categoria;
+        this.foto = foto;
+    }
+
+    
+    
     public int getId_produto() {
         return id_produto;
     }
@@ -91,18 +115,6 @@ public class Produto {
     }
 
     public void setNome_categoria(String nome_categoria) {
-        this.nome_categoria = nome_categoria;
-    }
-
-    public Produto(int id_produto, String nome_produto, String descricao, double preco, int quantidade, int id_categoria, Date data_cadastro, int ativo, String nome_categoria) {
-        this.id_produto = id_produto;
-        this.nome_produto = nome_produto;
-        this.descricao = descricao;
-        this.preco = preco;
-        this.quantidade = quantidade;
-        this.id_categoria = id_categoria;
-        this.data_cadastro = data_cadastro;
-        this.ativo = ativo;
         this.nome_categoria = nome_categoria;
     }
 

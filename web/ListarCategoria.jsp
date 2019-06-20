@@ -9,7 +9,7 @@
         <jsp:include page="Header.jsp"/>
     </head>
     <body>
-        <jsp:include page="nav.jsp"/>
+        <jsp:include page="i_nav.jsp"/>
         <br>
         <br>
         <br>
@@ -32,20 +32,19 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-
                                     <%
                                         List<Categoria> listaDeClientes = (List<Categoria>) request.getAttribute("lista");
                                         CategoriaDAO dao = new CategoriaDAO();
                                         List<Categoria> lista = dao.listarTodas();
-                                        for(Categoria categoria : lista) {
+                                        for (Categoria categoria : lista) {
                                     %>
                                     <tr>
-                                        <td><%= categoria.getId_categoria() %></td>
-                                        <td><%= categoria.getNome_categoria() %></td>
-                                        <td><%= categoria.getDescricao() %></td>
+                                        <td><%= categoria.getId_categoria()%></td>
+                                        <td><%= categoria.getNome_categoria()%></td>
+                                        <td><%= categoria.getDescricao()%></td>
                                     </tr>
 
-                                    <% } %>
+                                    <% }%>
                                 </tbody>
                             </table>
                         </div>
@@ -53,20 +52,16 @@
                 </form>
             </div>
         </div>
-        <footer class="page-footer blue">
-            <div class="container">
-                <div class="row">
-                    <div class="col l6 s12">
-                        <h5 class="white-text">Autor: Luis Henrique Delcul</h5>
-
-                    </div>
-
+        <div class="row">
+            <div class="center-align">
+                <div class="input-field col s3 center"> 
+                    <a href="PainelADM.jsp" class="btn red darken-2 ">Cancelar</a>
+                </div>
+                <div class="input-field col s3 center">
+                    <input type="submit" value="Salvar" class="btn green">
                 </div>
             </div>
-            <div class="footer-copyright">
-                <div class="container">? 2019 Instituto Federal Farroupilha - Campus
-                    S?o Vicente do Sul</div>
-            </div>
-        </footer>
+        </div>
+        <jsp:include page="footer.jsp"/>
     </body>
 </html>

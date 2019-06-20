@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controle;
 
 import DAO.UsuarioDAO;
@@ -19,22 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author 2017000879
- */
 public class UsuarioControle extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     * @throws java.sql.SQLException
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
 
@@ -52,6 +33,12 @@ public class UsuarioControle extends HttpServlet {
 //
 //        }
 
+        if (metodo.equals("addCarrinho")) {
+            String id_produto = request.getParameter("id_produto");
+            response.sendRedirect("./VisualizarProduto?id_produto="+id_produto); 
+
+        }
+
         if (metodo.equals("login")) {
             String usuario_login = request.getParameter("usuario_login");
             String senha = request.getParameter("senha");
@@ -59,13 +46,28 @@ public class UsuarioControle extends HttpServlet {
             try {
                 if (usuario != null) {
                     session.setAttribute("nome_usuario", usuario.getNome_usuario());
-                    response.sendRedirect("./home.jsp");
+                    session.setAttribute("email", usuario.getEmail());
+                    session.setAttribute("categoria", usuario.getCategoria());
+                    session.setAttribute("cpf", usuario.getCpf());
+                    session.setAttribute("rg", usuario.getRg());
+                    session.setAttribute("data_nascimento", usuario.getData_nascimento());
+                    session.setAttribute("endereco", usuario.getEndereco());
+                    session.setAttribute("telefone", usuario.getTelefone());
+                    session.setAttribute("sexo", usuario.getSexo());
+                    session.setAttribute("ativo", usuario.getAtivo());
+                    session.setAttribute("id_usuario", usuario.getId_usuario());
+                    response.sendRedirect("./Home.jsp");
                 } else {
-                    response.sendRedirect("./login.jsp");
+                    response.sendRedirect("./Login.jsp");
                 }
-            } catch (Exception e) {
+            } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
+        }
+
+        if (metodo.equals("sair")) {
+            session.invalidate();
+            response.sendRedirect("./Home.jsp");
         }
 
         if (metodo.equals("insert")) {
@@ -77,7 +79,6 @@ public class UsuarioControle extends HttpServlet {
             String email = request.getParameter("email");
             String telefone = request.getParameter("telefone");
             String sexo = request.getParameter("sexo");
-            //String categoria = request.getParameter("categoria");
             String senha = request.getParameter("senha");
             String senha2 = request.getParameter("senha2");
 
@@ -94,8 +95,13 @@ public class UsuarioControle extends HttpServlet {
             usuario.setData_nascimento(data_nascimento);
             if (senha.equals(senha2)) {
                 if (dao.inserir(usuario)) {
-                    response.sendRedirect("./index.html");
+                    response.sendRedirect("./Login.jsp");
+                } else {
+                    response.sendRedirect("./CadastroUsuario.jsp");
                 }
+            } else {
+                response.sendRedirect("./CadastroUsuario.jsp");
+
             }
         }
     }

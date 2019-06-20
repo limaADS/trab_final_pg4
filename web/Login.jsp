@@ -17,16 +17,19 @@
                 <div class="row">
                     <form class="col s10 offset-l1" action="UsuarioControle?metodo=login" method="post">
                         <div class="input-field col s12">
-                            <i class="material-icons prefix">account_circle</i>
-                            <input id="icon_prefix" type="text" name="usuario_login" class="validate" required="treu">
+                            <i class="material-icons prefix">email</i>
+                            <input id="icon_prefix" type="email" name="usuario_login" class="validate" required="treu">
+                            <label >E-mail</label>
                         </div>
                         <div class="input-field col s12">
                             <i class="material-icons prefix">security</i>
                             <input id="icon_senha" type="password" name="senha" class="validate" required="true">
+                            <label >Senha</label>
+
                         </div>
                         <div class="red-text"> 
                         </div>
-                        <a href="#" class="btn green darken-2">Resgistr-se</a> 
+                        <a href="CadastroUsuario.jsp" class="btn green darken-2">Resgistr-se</a> 
                         <input type="submit" value="Entrar" class="btn blue corpadrao">
                     </form>
                 </div>

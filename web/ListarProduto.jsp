@@ -8,7 +8,7 @@
         <jsp:include page="Header.jsp"/>
     </head>
     <body>
-        <jsp:include page="nav.jsp"/>
+        <jsp:include page="i_nav.jsp"/>
         <br>
         <br>
         <br>
@@ -17,7 +17,7 @@
 
                 <%
                     ProdutoDAO dao = new ProdutoDAO();
-                    List<Produto> lista = dao.listarTodas();
+                    List<Produto> lista = dao.listarTodasPlus();
                 %>
 
                 <h4>Lista de Produtos</h4>
@@ -30,10 +30,8 @@
                                     <th>DESCRIÇÃO</th>
                                     <th>PREÇO</th>
                                     <th>ESTOQUE</th>
-                                    <th>DATA DE CADASTRO</th>
                                     <th>ATIVO</th>
                                     <th>Editar</th>
-                                    <th>ID</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -47,7 +45,6 @@
                                     <td><%= produto.getDescricao()%></td>
                                     <td>R$<%= produto.getPreco()%></td>
                                     <td><%= produto.getQuantidade()%></td>
-                                    <td><%=produto.getData_cadastro()%></td> 
                                     <td><% if (produto.getAtivo() == 1) {
                                         %>
                                         SIM
@@ -57,11 +54,18 @@
                                         NÂO
                                         <%
                                             }%>
-                                    <td><a href="EditarProduto.jsp?id_produto=<%= produto.getId_produto() %>">Editar</td>
+                                    <td><a href="EditarProduto.jsp?id_produto=<%= produto.getId_produto()%>">Editar</td>
 
                                     <% }%>
                             </tbody>
                         </table>
+                        <div class="row">
+                            <div>
+                                <div class="input-field col s3 center"> 
+                                    <a href="PainelADM.jsp" class="btn red darken-2 ">Voltar</a>
+                                </div>
+                                
+                        </div>
                     </div>
                 </div>
             </div>

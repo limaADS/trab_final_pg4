@@ -20,6 +20,8 @@ public class UsuarioDAO {
         }
     }
 
+  
+
     public Usuario login(String usuario_login, String senha) {
         Usuario usuario = new Usuario();
         try {
@@ -30,15 +32,16 @@ public class UsuarioDAO {
             pstmt.setString(2, senha);
             resultado = pstmt.executeQuery();
             resultado.next();
-            usuario.setNome_usuario(resultado.getString("id_usuario"));
+            usuario.setId_usuario(resultado.getString("id_usuario"));
             usuario.setNome_usuario(resultado.getString("nome_usuario"));
-            usuario.setNome_usuario(resultado.getString("data_nascimento"));
-            usuario.setNome_usuario(resultado.getString("rg"));
-            usuario.setNome_usuario(resultado.getString("cpf"));
-            usuario.setNome_usuario(resultado.getString("endereco"));
-            usuario.setNome_usuario(resultado.getString("email"));
-            usuario.setNome_usuario(resultado.getString("telefone"));
-            usuario.setNome_usuario(resultado.getString("sexo"));
+            usuario.setData_nascimento(resultado.getString("data_nascimento"));
+            usuario.setRg(resultado.getString("rg"));
+            usuario.setCpf(resultado.getString("cpf"));
+            usuario.setEndereco(resultado.getString("endereco"));
+            usuario.setEmail(resultado.getString("email"));
+            usuario.setTelefone(resultado.getString("telefone"));
+            usuario.setSexo(resultado.getString("sexo"));
+            usuario.setAtivo(resultado.getInt("ativo"));
             usuario.setCategoria(resultado.getString("categoria"));
 //            System.out.println("Cadastro: " + usuario.getNome_usuario());
             return usuario;
