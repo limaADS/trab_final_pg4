@@ -17,15 +17,17 @@ public class Cesta {
     private int id_produto;
     private Date data_Cadastro;
     private int id_usuario;
+    private int quantidade;
 
     public Cesta() {
     }
 
-    public Cesta(int id_cesta, int id_produto, Date data_Cadastro, int id_usuario) {
+    public Cesta(int id_cesta, int id_produto, Date data_Cadastro, int id_usuario, int quantidade) {
         this.id_cesta = id_cesta;
         this.id_produto = id_produto;
         this.data_Cadastro = data_Cadastro;
         this.id_usuario = id_usuario;
+        this.quantidade = quantidade;
     }
 
     public int getId_cesta() {
@@ -58,6 +60,14 @@ public class Cesta {
 
     public void setId_usuario(int id_usuario) {
         this.id_usuario = id_usuario;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
 }

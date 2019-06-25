@@ -5,7 +5,6 @@
  */
 package DAO;
 
-import Modelo.Categoria;
 import Modelo.Produto;
 import java.sql.Connection;
 import java.sql.Date;
@@ -15,10 +14,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author 2017000879
- */
 public class ProdutoDAO {
 
     private Connection conexao;
@@ -41,7 +36,6 @@ public class ProdutoDAO {
             pstmt.close();
             return true;
         } catch (Exception e) {
-
             System.out.println(e.getMessage());
             return false;
         }
@@ -61,6 +55,7 @@ public class ProdutoDAO {
                 produto.setPreco(resultado.getDouble("preco"));
                 produto.setQuantidade(resultado.getInt("quantidade"));
                 produto.setData_cadastro(resultado.getDate("data_cadastro"));
+                produto.setFoto(resultado.getString("foto"));
                 produto.setAtivo(resultado.getInt("ativo"));
 //                lista.add(produto);
             }

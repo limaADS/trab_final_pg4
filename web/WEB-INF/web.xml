@@ -24,6 +24,10 @@
         <servlet-name>CestaControle</servlet-name>
         <servlet-class>Controle.CestaControle</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VendaControle</servlet-name>
+        <servlet-class>Controle.VendaControle</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsuarioControle</servlet-name>
         <url-pattern>/UsuarioControle</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>CestaControle</servlet-name>
         <url-pattern>/CestaControle</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VendaControle</servlet-name>
+        <url-pattern>/VendaControle</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

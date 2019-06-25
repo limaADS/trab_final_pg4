@@ -41,6 +41,11 @@ public class ProdutoControle extends HttpServlet {
             response.sendRedirect("./EditarProduto.jsp?id=" + id_produto + "");
             
         }
+        if(metodo.equals("visualizarProduto")){
+            int id = Integer.parseInt(request.getParameter("id_produto"));
+             rd = request.getRequestDispatcher("VisualizarProduto.jsp");
+            rd.forward(request, response);
+        }
         
         if (metodo.equals("listarTudo")) {
             List lista = dao.listarTodas();

@@ -11,8 +11,6 @@
     <body>
         <jsp:include page="i_nav.jsp"/>
         <br>
-        <br> 
-        <br>
 
         <%
             int id_produto = 999;
@@ -34,58 +32,30 @@
                 System.out.println(e.getMessage());
             }
         %>
-        <div class="row">
-            <div class="col s6 offset-l3 card-content center" id="card_Cad_Usuario" align="center">
-                <form action="ProdutoControle?metodo=insert"  method="post">
-                    <h4>Editar produto</h4>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input  value="<%= nome_produto%>" type="text" class="validate" name="nome_produto">
-                            <label>Nome do produto</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input value="<%= descricao%>"  type="text" class="validate" name="descricao">
-                            <label>Descrição</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s2">
-                            <input value="<%= quantidade%>"  type="number" class="validate" name="quantidade">
-                            <label>Quantidade</label>
-                        </div>
-                        <div class="input-field col s4">
-                            <input value="<%= preco%>"  type="number" class="validate" name="preco" min="0">
-                            <label>Preço em R$</label>
-                        </div>
+        <%
+            ProdutoDAO dao = new ProdutoDAO();
+            List<Produto> lista = dao.listarTodas();
+        %>
+        <div class="row center-align">
+            <h5>Detales do Produto! </h5>
+            <br>
+            <%
+                Produto produto = new Produto();
+                produto = dao.pesquisaPorID(id_produto);
+            %>
+            <div class="col s12">
 
+                <img src="./img/<%=produto.getFoto()%>" width="300px" height="300px">
 
+                <h5><%= produto.getNome_produto()%></h5>
+                <h6><%= produto.getDescricao()%></h6>
+                <h6>R$ <%= produto.getPreco()%></h6>
+                <h6>Estoque: <%= produto.getQuantidade()%></h6>
+                
 
-                        <div class="col s4">
-                            <label>Escolha a categoria</label>
-                            <select class="browser-default" name="id_categoria">
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
-                            </select>
-                        </div>
-                    </div>
-
-
-                    <div class="row">
-                        <div>
-                            <div class="input-field col s3 center">
-                                <a href="#" class="btn red darken-2 ">Cancelar</a>
-                            </div>
-                            <div class="input-field col s3 center">
-                                <input type="submit" value="Salvar" class="btn green">
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
+                <a href="CestaControle?metodo=add_cesta&id_produto=<%=produto.getId_produto()%> ">Add Cesta</a>
             </div>
+
         </div>
         <jsp:include page="./footer.jsp"/>
     </body>

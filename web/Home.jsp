@@ -20,16 +20,16 @@
             <br>
             <%
                 for (Produto produto : lista) {
-
             %>
 
             <div class="col s3">
                 <img src="./img/<%=produto.getFoto()%>" width="300px" height="300px">
-                <h5><%= produto.getNome_produto()%></h5>
-                <h6><%= produto.getDescricao()%></h6>
-                <h6>R$ <%= produto.getPreco()%></h6>
-                <h6>Qtdd: <%= produto.getQuantidade()%></h6>
-                <a href="CestaControle?metodo=add_cesta&id_produto=<%=produto.getId_produto()%> ">Add Cesta</a>
+                <br>
+                <a href="ProdutoControle?metodo=visualizarProduto&id_produto=<%=produto.getId_produto()%>"<h5><%= produto.getNome_produto()%></h5></a>
+                    <h6><%= produto.getDescricao()%></h6>
+                    <h6>R$ <%= produto.getPreco()%></h6>
+                    <h6>Estoque: <%= produto.getQuantidade()%></h6>
+                    <a href="CestaControle?metodo=add_cesta&id_produto=<%=produto.getId_produto()%> ">Add Cesta</a>
             </div>
             <% }%>
         </div>
