@@ -53,8 +53,6 @@ public class ProdutoDAO {
             pstmt.setInt(1, id_produto);
             ResultSet resultado = pstmt.executeQuery();
             Produto produto = new Produto();
-
-//            List<Produto> lista = new ArrayList<Produto>();
             while (resultado.next()) {
                 produto.setId_produto(resultado.getInt("id_produto"));
                 produto.setId_categoria(resultado.getInt("id_categoria"));
@@ -75,7 +73,7 @@ public class ProdutoDAO {
 
     public List listarTodas() {
         try {
-            PreparedStatement pstmt = conexao.prepareStatement("SELECT * from produto WHERE ativo = '1';");
+            PreparedStatement pstmt = conexao.prepareStatement("SELECT * from produto WHERE ativo = '1' order by id_produto desc;");
 //            PreparedStatement pstmt = conexao.prepareStatement("SELECT p.*, c.nome_categoria FROM produto p INNER JOIN categoria c"
 //                    + "ON p.id_categoria=c.id_categoria;");
             ResultSet resultado = pstmt.executeQuery();
@@ -103,7 +101,7 @@ public class ProdutoDAO {
 
     public List listarTodasPlus() {
         try {
-            PreparedStatement pstmt = conexao.prepareStatement("SELECT * from produto;");
+            PreparedStatement pstmt = conexao.prepareStatement("SELECT * from produto order by id_produto;");
 //            PreparedStatement pstmt = conexao.prepareStatement("SELECT p.*, c.nome_categoria FROM produto p INNER JOIN categoria c"
 //                    + "ON p.id_categoria=c.id_categoria;");
             ResultSet resultado = pstmt.executeQuery();

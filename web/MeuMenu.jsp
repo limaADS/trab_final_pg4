@@ -6,37 +6,60 @@
     </head>
     <body>
         <jsp:include page="i_nav.jsp"/>
+
+        <% String nome_usuario = (String) session.getAttribute("nome_usuario");
+            String rg = (String) session.getAttribute("rg");
+            String cpf = (String) session.getAttribute("cpf");
+            String telefone = (String) session.getAttribute("telefone");
+            String endereco = (String) session.getAttribute("endereco");
+            String email = (String) session.getAttribute("email");
+            String data_nascimento = (String) (String) session.getAttribute("data_nascimento");
+            String catgoria = (String) session.getAttribute("categoria");
+
+            System.out.println(nome_usuario);
+            System.out.println(rg);
+            System.out.println(cpf);
+            System.out.println(telefone);
+            System.out.println(endereco);
+            System.out.println(email);
+            System.out.println(data_nascimento);
+            System.out.println(catgoria);
+        %> 
+
         <div class="row">
             <div class="col s6 offset-l3 card-content lighten-5" id="card_Cad_Usuario">
-                <form class="col s12" action="UsuarioControle?metodo=insert" method="post">
-                    <div class="center-align"><h4>Cadastre-se</h4></div>
+                <form class="col s12" action="UsuarioControle?metodo=atualizaUser" method="post">
+                    <div class="center-align"><h4>Editar perfil</h4></div>
                     <div class="row">
                         <div class="input-field col s8">
-                            <input  required placeholder="Nome Completo" id="nome_usuario" type="text" class="validate" name="nome_usuario">
+                            <input  hidden value="<%=catgoria %>"  type="text" class="validate" name="categoria">
+                        </div>
+                        <div class="input-field col s8">
+                            <input  value="<%=nome_usuario%>" required placeholder="Nome Completo" id="nome_usuario" type="text" class="validate" name="nome_usuario">
                             <label for="nome_usuario">Nome Completo</label>
                         </div>
                         <div class = "col s4">               
                             <label>Data de Nascimento</label>              
-                            <input  required type = "date" class = "datepicker" name="data_nascimento" />    
+                            <input  value="<%=data_nascimento%>" required type = "date" class = "datepicker" name="data_nascimento" />    
                         </div> 
                     </div>
                     <div class="row">
                         <div class="input-field col s4">
-                            <input required placeholder="RG" id="rg" class="validate" type="number" name="rg">
+                            <input value="<%=rg%>" required placeholder="RG" id="rg" class="validate" type="number" name="rg">
                             <label for="rg">RG</label>
                         </div>
                         <div class="input-field col s4">
-                            <input required placeholder="CPF" id="cpf" type="number" class="validate" name="cpf">
+                            <input value="<%=cpf%>" required placeholder="CPF" id="cpf" type="number" class="validate" name="cpf">
                             <label for="cpf">CPF</label>
                         </div>
                         <div class="input-field col s4">
-                            <input required placeholder="Telefone" id="telefone" type="number" class="validate" name="telefone">
+                            <input  value="<%=telefone%>"required placeholder="Telefone" id="telefone" type="number" class="validate" name="telefone">
                             <label for="telefone">Telefone</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s9">
-                            <input required placeholder="Endereço" id="endereco" type="text" class="validate" name="endereco">
+                            <input value="<%=endereco%>" required placeholder="Endereço" id="endereco" type="text" class="validate" name="endereco">
                             <label for="endereco">Endereço</label>
                         </div>
                         <div class="col s3">
@@ -48,7 +71,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input required placeholder="E-mail" id="email" type="email" class="validate" name="email">
+                            <input value="<%=email%>" required placeholder="E-mail" id="email" type="email" class="validate" name="email">
                             <label for="email">E-mail</label>
                         </div>
                     </div>

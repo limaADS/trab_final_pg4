@@ -1,7 +1,6 @@
 package DAO;
 
 import Modelo.Cesta;
-import Modelo.Produto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -42,18 +41,21 @@ public class CestaDAO {
 
     }
 
-    public List listarTodas() {
+    public List listarTodas(int id_usuario) {
         try {
-            PreparedStatement pstmt = conexao.prepareStatement("SELECT * from cesta;");
-//            PreparedStatement pstmt = conexao.prepareStatement("SELECT p.*, c.nome_categoria FROM produto p INNER JOIN categoria c"
-//                    + "ON p.id_categoria=c.id_categoria;");
+//            PreparedStatement pstmt = conexao.prepareStatement("SELECT * FROM produto p INNER JOIN cesta c "
+//                    + "ON p.id_produto=c.id_produto INNER JOIN usuario u ON u.id_usuario=c.id_usuario "
+//                    + "WHERE c.id_usuario = ? ;");
+            PreparedStatement pstmt = conexao.prepareStatement("SELECT * FROM cesta WHERE c.id_usuario = ? ;");
+            pstmt.setInt(1, id_usuario);
             ResultSet resultado = pstmt.executeQuery();
             List<Cesta> lista = new ArrayList<Cesta>();
             while (resultado.next()) {
                 Cesta cesta = new Cesta();
-//                produto.setId_produto(resultado.getInt("id_produto"));
+                cesta.setId_cesta(resultado.getInt("id_cesta"));
+                cesta.setId_cesta(resultado.getInt("id_usuario"));
+                cesta.setId_produto(resultado.getInt("id_produto"));
                 lista.add(cesta);
-//                lista.add(categoria);
             }
             return lista;
         } catch (SQLException e) {

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import Modelo.Usuario;
 import java.sql.Date;
 import java.sql.ResultSet;
+import org.jboss.weld.module.web.servlet.SessionHolder;
 //import java.util.Date;
 
 public class UsuarioDAO {
@@ -19,8 +20,6 @@ public class UsuarioDAO {
             System.out.println("Erro: " + e.getMessage());
         }
     }
-
-  
 
     public Usuario login(String usuario_login, String senha) {
         Usuario usuario = new Usuario();
@@ -73,14 +72,17 @@ public class UsuarioDAO {
             System.out.println("Erro: " + e.getMessage());
             return false;
         }
-
     }
 
-    public boolean update(Usuario usuario) throws SQLException {
+    public boolean atualizaUser(Usuario usuario) throws SQLException {
         try {
-            PreparedStatement pstmt = conexao.prepareStatement("");
+            PreparedStatement pstmt = conexao.prepareStatement("UPDATE usuario set nome_usuario = ? , "
+                    + "data_nascimento = ? , rg = ? , cpf = ? , endereco = ? , email = ? ,  telefone = ? "
+                    + ",  ativo = ? , sexo = ? , categoria = ? , "
+                    + "senha = ? WHERE id_usuario= ? ");
 
             pstmt.setString(1, usuario.getNome_usuario());
+            System.out.println("\n\n" + usuario.getNome_usuario());
             pstmt.setDate(2, Date.valueOf(usuario.getData_nascimento()));
             pstmt.setString(3, usuario.getRg());
             pstmt.setString(4, usuario.getCpf());
@@ -91,10 +93,11 @@ public class UsuarioDAO {
             pstmt.setString(9, usuario.getSexo());
             pstmt.setString(10, usuario.getCategoria());
             pstmt.setString(11, usuario.getSenha());
+            pstmt.setInt(12, Integer.parseInt(usuario.getId_usuario()));
             pstmt.execute();
             pstmt.close();
             return true;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro: " + e.getMessage());
             return false;
         }

@@ -1,0 +1,1 @@
+UPDATE usuario set nome_usuario = ? , data_nascimento = ? , rg = ? , cpf = ? , endereco = ? , email = ? ,  telefone = ? senha = ? WHERE id_usuario= ? ");

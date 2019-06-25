@@ -2,7 +2,6 @@
 <%@page import="java.util.List"%>
 <%@page import="DAO.ProdutoDAO"%>
 <%@page import="Controle.ProdutoControle"%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,7 +14,7 @@
             List<Produto> lista = dao.listarTodas();
         %>
         <div class="row center-align">
-            <h5>Sua saúde em primeiro lugar </h5>
+            <h5>Sua saúde em primeiro lugar! </h5>
             <br>
             <br>
             <br>

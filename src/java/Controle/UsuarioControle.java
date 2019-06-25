@@ -35,12 +35,52 @@ public class UsuarioControle extends HttpServlet {
 
         if (metodo.equals("addCarrinho")) {
             String id_produto = request.getParameter("id_produto");
-            response.sendRedirect("./VisualizarProduto?id_produto="+id_produto); 
+            response.sendRedirect("./VisualizarProduto?id_produto=" + id_produto);
 
         }
 
+        if (metodo.equals("atualizaUser")) {
+            String nome_usuario = request.getParameter("nome_usuario");
+            String data_nascimento = request.getParameter("data_nascimento");
+            String rg = request.getParameter("rg");
+            String cpf = request.getParameter("cpf");
+            String endereco = request.getParameter("endereco");
+            String email = request.getParameter("email");
+            String telefone = request.getParameter("telefone");
+            String sexo = request.getParameter("sexo");
+            String senha = request.getParameter("senha");
+            String senha2 = request.getParameter("senha2");
+            String id_user = (String) session.getAttribute("id_usuario");
+            String categoria = (String) session.getAttribute("categoria");
+
+            usuario.setNome_usuario(nome_usuario);
+            usuario.setRg(rg);
+            usuario.setCpf(cpf);
+            usuario.setCategoria(categoria);
+            usuario.setEndereco(endereco);
+            usuario.setEmail(email);
+            usuario.setTelefone(telefone);
+            usuario.setSexo(sexo);
+            usuario.setAtivo(1);
+            usuario.setSenha(senha);
+            usuario.setData_nascimento(data_nascimento);
+            usuario.setId_usuario(id_user);
+
+            if (senha.equals(senha2)) {
+                if (dao.atualizaUser(usuario)) {
+                    dao.login(categoria, senha);
+                    session.invalidate();
+                    response.sendRedirect("Login.jsp?msg=sucesso");
+                } else {
+                    response.sendRedirect("./MeuMenu.jsp?msg=erroExecutarDAOnoControle");
+                }
+            } else {
+                response.sendRedirect("./MeuMenu.jsp?msg=erroSenhasDiferentes");
+            }
+        }
+
         if (metodo.equals("login")) {
-            String usuario_login = request.getParameter("usuario_login");
+            String usuario_login = request.getParameter("usuario_login");           
             String senha = request.getParameter("senha");
             usuario = dao.login(usuario_login, senha);
             try {
