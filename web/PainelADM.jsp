@@ -9,15 +9,17 @@
         <div class="row">
             <div class="col s4 offset-l4 center-align ">
                 <ul class="collapsible">    
-                    <li>
-<!--                        <div class="collapsible-header"><i class="material-icons">filter_drama</i>Categoria</div>
-                        <div class="collapsible-body"><a href="CadastroCategoria.jsp">Cadastro Categoria</a></div>
-                        <div class="collapsible-body"><a href="ListarCategoria.jsp">Listar Categoria</a></div>
-                    </li>-->
+
                     <li>
                         <div class="collapsible-header"><i class="material-icons">filter_drama</i>Produto</div>
                         <div class="collapsible-body"><a href="CadastroProduto.jsp">Cadastro Produto</a></div>
                         <div class="collapsible-body"><a href="ListarProduto.jsp">Listar Produto</a></div>
+                    </li> 
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">filter_drama</i>Relatório</div>
+                        <div class="collapsible-body"><a href="UsuariosCompraram.jsp">Usuários que efetuaram compras</a></div>
+                        <div class="collapsible-body"><a href="ProdutosComprados.jsp">Produtos comprados por data</a></div>
+                        <div class="collapsible-body"><a href="PesquisaPorProduto.jsp">Pesquisa por produto</a></div>
                     </li>
                 </ul>
             </div>
@@ -26,6 +28,6 @@
         <script>
             M.AutoInit();
         </script>
-        
+
     </body>
 </html>

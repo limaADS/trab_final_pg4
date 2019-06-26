@@ -28,6 +28,10 @@
         <servlet-name>VendaControle</servlet-name>
         <servlet-class>Controle.VendaControle</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RelatorioDAO</servlet-name>
+        <servlet-class>DAO.RelatorioDAO</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsuarioControle</servlet-name>
         <url-pattern>/UsuarioControle</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>VendaControle</servlet-name>
         <url-pattern>/VendaControle</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RelatorioDAO</servlet-name>
+        <url-pattern>/RelatorioDAO</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -29,11 +29,9 @@ public class VendaDao {
 
     public Venda vender(Venda venda) throws SQLException {
         try {
-
             PreparedStatement pstmt = conexao.prepareStatement("insert into venda"
                     + "(id_venda, id_usuario, total_venda) "
                     + "values(default,?,?);");
-
             pstmt.setInt(1, venda.getId_usuario());
             pstmt.setDouble(2, venda.getTotal_venda());
             pstmt.execute();
@@ -43,10 +41,8 @@ public class VendaDao {
             rs.next();
             venda.setId_venda(rs.getInt(1));
             pstmt.close();
-
             return venda;
-
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Erro: " + e.getMessage());
             return null;
         }

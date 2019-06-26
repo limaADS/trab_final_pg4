@@ -1,10 +1,14 @@
 package Controle;
 
+import DAO.RelatorioDAO;
 import DAO.UsuarioDAO;
 import Modelo.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -17,14 +21,15 @@ import javax.servlet.http.HttpSession;
 public class UsuarioControle extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException {
+            throws ServletException, IOException, SQLException, ParseException {
 
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
-
+        RequestDispatcher disp = request.getRequestDispatcher("");
         String metodo = request.getParameter("metodo");
         Usuario usuario = new Usuario();
         UsuarioDAO dao = new UsuarioDAO();
+        RelatorioDAO rdao = new RelatorioDAO();
 //        if (metodo.equals("update")) {
 //
 //        }
@@ -32,6 +37,15 @@ public class UsuarioControle extends HttpServlet {
 //        if (metodo.equals("delete")) {
 //
 //        }
+
+        if (metodo.equals("relUsuarioCompras")) {
+            DateFormat dfm = new SimpleDateFormat("yyyy-MM-dd");
+            java.sql.Date dateinicio = new java.sql.Date(dfm.parse(request.getParameter("dataA")).getTime());
+            java.sql.Date datefim = new java.sql.Date(dfm.parse(request.getParameter("dataB")).getTime());
+            request.setAttribute("Lista", rdao.usuariosComprasData(dateinicio, datefim));
+            disp = request.getRequestDispatcher("./UsuariosCompraram.jsp");
+            disp.forward(request, response);
+        }
 
         if (metodo.equals("addCarrinho")) {
             String id_produto = request.getParameter("id_produto");
@@ -80,7 +94,7 @@ public class UsuarioControle extends HttpServlet {
         }
 
         if (metodo.equals("login")) {
-            String usuario_login = request.getParameter("usuario_login");           
+            String usuario_login = request.getParameter("usuario_login");
             String senha = request.getParameter("senha");
             usuario = dao.login(usuario_login, senha);
             try {
@@ -162,6 +176,8 @@ public class UsuarioControle extends HttpServlet {
             processRequest(request, response);
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioControle.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(UsuarioControle.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -179,6 +195,8 @@ public class UsuarioControle extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
+            Logger.getLogger(UsuarioControle.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
             Logger.getLogger(UsuarioControle.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

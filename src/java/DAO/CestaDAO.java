@@ -23,10 +23,9 @@ public class CestaDAO {
 
     public boolean inserir(Cesta cesta) throws SQLException {
         try {
-//            PreparedStatement pstmt = conexao.prepareStatement("insert into produto(id_produto, nome_produto) values(default,?);");
             PreparedStatement pstmt = conexao.prepareStatement("insert into cesta "
                     + "(id_cesta, id_produto, id_usuario) "
-                    + "values(default,?,?);");
+                    + "values(default,?,?)");
 
             pstmt.setInt(1, cesta.getId_produto());
             pstmt.setInt(2, cesta.getId_usuario());
@@ -37,6 +36,7 @@ public class CestaDAO {
 
         } catch (SQLException e) {
             System.out.println("Erro: " + e.getMessage());
+            System.out.println("Erro add cestaDAO");
             return false;
         }
 
@@ -44,9 +44,6 @@ public class CestaDAO {
 
     public List<Cesta> listarTodas(String id_usuario) {
         try {
-//            PreparedStatement pstmt = conexao.prepareStatement("SELECT * FROM produto p INNER JOIN cesta c "
-//                    + "ON p.id_produto=c.id_produto INNER JOIN usuario u ON u.id_usuario=c.id_usuario "
-//                    + "WHERE c.id_usuario = ? ;");
             PreparedStatement pstmt = conexao.prepareStatement("SELECT * FROM cesta WHERE id_usuario = ? ;");
             pstmt.setInt(1, Integer.parseInt(id_usuario));
             ResultSet resultado = pstmt.executeQuery();
@@ -65,10 +62,7 @@ public class CestaDAO {
             return null;
         }
     }
-    
-    
-    
-    
+
     public Produto pesquisaPorID(int id_produto) throws SQLException {
         try {
             PreparedStatement pstmt = conexao.prepareStatement("SELECT * from produto where id_produto = ?");
@@ -77,14 +71,13 @@ public class CestaDAO {
             Produto produto = new Produto();
             while (resultado.next()) {
                 produto.setId_produto(resultado.getInt("id_produto"));
-                
+
                 produto.setNome_produto(resultado.getString("nome_produto"));
                 produto.setDescricao(resultado.getString("descricao"));
                 produto.setPreco(resultado.getDouble("preco"));
                 produto.setQuantidade(resultado.getInt("quantidade"));
                 produto.setData_cadastro(resultado.getDate("data_cadastro"));
                 produto.setAtivo(resultado.getInt("ativo"));
-//                lista.add(produto);
             }
             return produto;
         } catch (SQLException e) {
@@ -92,14 +85,15 @@ public class CestaDAO {
             return null;
         }
     }
-    
+
     public boolean delete(int id_cesta) {
         try {
             PreparedStatement pstmt = conexao.prepareStatement("delete from cesta where id_cesta = ?");
             pstmt.setInt(1, id_cesta);
             pstmt.execute();
+            System.out.println("\n DELETANDO DA CESTA\n");
             return true;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             return false;
         }

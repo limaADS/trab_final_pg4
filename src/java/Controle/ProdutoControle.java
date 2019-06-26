@@ -6,11 +6,14 @@
 package Controle;
 
 import DAO.ProdutoDAO;
+import DAO.RelatorioDAO;
 import Modelo.Produto;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,28 +28,51 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 public class ProdutoControle extends HttpServlet {
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, FileUploadException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         Produto produto = new Produto();
         ProdutoDAO dao = new ProdutoDAO();
+        RequestDispatcher disp = request.getRequestDispatcher("");
+        RelatorioDAO rdao = new RelatorioDAO();
+
         String metodo = request.getParameter("metodo");
         System.out.println("Antes do insert IF");
         RequestDispatcher rd = null;
-        
+
         if (metodo.equals("vai_editar_produto")) {
             String id_produto = request.getParameter("id");
             System.out.println("ID RECEBIDO NO vai_editar_produto: " + id_produto);
             response.sendRedirect("./EditarProduto.jsp?id=" + id_produto + "");
-            
+
         }
-        if(metodo.equals("visualizarProduto")){
+
+        if (metodo.equals("relProdutosCompras")) {
+            DateFormat dfm = new SimpleDateFormat("yyyy-MM-dd");
+            java.sql.Date dateinicio = new java.sql.Date(dfm.parse(request.getParameter("dataA")).getTime());
+            java.sql.Date datefim = new java.sql.Date(dfm.parse(request.getParameter("dataB")).getTime());
+            request.setAttribute("Lista", rdao.produtosCompradosPorData(dateinicio, datefim));
+            disp = request.getRequestDispatcher("./ProdutosComprados.jsp");
+            disp.forward(request, response);
+        }
+
+        if (metodo.equals("relUsuariosProdutos")) {
+            System.out.println("cheguei no relaotrio");
+            String id = (String) request.getParameter("id_produto");
+            System.out.println("Id recebido: " + id);
+            request.setAttribute("Lista", rdao.pesquisaPorProdutoRelatorio(id));
+
+            disp = request.getRequestDispatcher("./PesquisaPorProduto.jsp");
+            disp.forward(request, response);
+        }
+
+        if (metodo.equals("visualizarProduto")) {
             int id = Integer.parseInt(request.getParameter("id_produto"));
-             rd = request.getRequestDispatcher("VisualizarProduto.jsp");
+            rd = request.getRequestDispatcher("VisualizarProduto.jsp");
             rd.forward(request, response);
         }
-        
+
         if (metodo.equals("listarTudo")) {
             List lista = dao.listarTodas();
             request.setAttribute("lista", lista);
@@ -75,7 +101,7 @@ public class ProdutoControle extends HttpServlet {
                 response.sendRedirect("./PainelADM.jsp?erro=insertProduto");
             }
         }
-        
+
         if (metodo.equals("InserirFoto")) {
             List<FileItem> multiparts = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
             for (FileItem item : multiparts) {
@@ -94,9 +120,9 @@ public class ProdutoControle extends HttpServlet {
                 }
             }
             response.sendRedirect("./PainelADM.jsp?msg=Sucesso");
-            
+
         }
-        
+
         if (metodo.equals("update")) {
             System.out.println("update produto controle");
             try {
@@ -112,7 +138,7 @@ public class ProdutoControle extends HttpServlet {
                 produto.setDescricao(descricao);
                 produto.setQuantidade(Integer.parseInt(quantidade));
                 produto.setAtivo(Integer.parseInt(ativo));
-                
+
             } catch (NumberFormatException e) {
                 System.out.println(e.getMessage());
             }
@@ -124,14 +150,14 @@ public class ProdutoControle extends HttpServlet {
                 response.sendRedirect("./PainelADM.jsp?erro=insertProduto");
             }
         }
-        
+
         if (metodo.equals("editar")) {
             int id = Integer.parseInt(request.getParameter("id_produto"));
             String preco = request.getParameter("id_produto");
             rd = request.getRequestDispatcher("EditarProduto.jsp");
             rd.forward(request, response);
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

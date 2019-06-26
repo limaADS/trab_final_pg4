@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO;
 
 import Modelo.Produto;
@@ -35,7 +30,7 @@ public class ProdutoDAO {
             pstmt.execute();
             pstmt.close();
             return true;
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             return false;
         }
@@ -57,7 +52,6 @@ public class ProdutoDAO {
                 produto.setData_cadastro(resultado.getDate("data_cadastro"));
                 produto.setFoto(resultado.getString("foto"));
                 produto.setAtivo(resultado.getInt("ativo"));
-//                lista.add(produto);
             }
             return produto;
         } catch (SQLException e) {
@@ -65,6 +59,7 @@ public class ProdutoDAO {
             return null;
         }
     }
+    
 
     public List listarTodas() {
         try {

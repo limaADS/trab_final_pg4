@@ -6,7 +6,7 @@
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="Home.jsp">Início</a></li>
                 <li><a href="MeuMenu.jsp">Meu menu</a></li>
-                <li><a href="Cesta.jsp">Carrinho</a></li>
+                <li><a href="Cesta.jsp">Cesta</a></li>
                 <li><a href="UsuarioControle?metodo=sair">Sair</a></li>
             </ul>
         </div>

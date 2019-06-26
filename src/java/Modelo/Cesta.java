@@ -7,10 +7,6 @@ package Modelo;
 
 import java.sql.Date;
 
-/**
- *
- * @author Sammy Guergachi <sguergachi at gmail.com>
- */
 public class Cesta {
 
     private int id_cesta;
