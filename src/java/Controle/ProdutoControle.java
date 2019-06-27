@@ -60,9 +60,8 @@ public class ProdutoControle extends HttpServlet {
         if (metodo.equals("relUsuariosProdutos")) {
             System.out.println("cheguei no relaotrio");
             String id = (String) request.getParameter("id_produto");
-            System.out.println("Id recebido: " + id);
+            System.out.println("Id recebido no relUsuariosProdutos: " + id);
             request.setAttribute("Lista", rdao.pesquisaPorProdutoRelatorio(id));
-
             disp = request.getRequestDispatcher("./PesquisaPorProduto.jsp");
             disp.forward(request, response);
         }

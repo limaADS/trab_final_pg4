@@ -46,7 +46,7 @@ public class RelatorioDAO {
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             System.out.println("\n\n\n\n\n\n\n\n\nERRO AQUI");
-            return null;
+            return null;            
         }
     }
 
@@ -66,9 +66,9 @@ public class RelatorioDAO {
                 usuario.setEmail(resultado.getString("email"));
                 usuario.setData_nascimento(resultado.getString("data_venda"));
                 lista.add(usuario);
-                System.out.println("nome de usuario" + usuario.getNome_usuario());
-                System.out.println("email do usuario" + usuario.getEmail());
-                System.out.println("Data de nascimento" + usuario.getData_nascimento());
+                System.out.println("nome de usuario: " + usuario.getNome_usuario());
+                System.out.println("email do usuario: " + usuario.getEmail());
+                System.out.println("Data de nascimento: " + usuario.getData_nascimento());
             }
             return lista;
         } catch (SQLException e) {

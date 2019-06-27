@@ -52,14 +52,13 @@
                             System.out.println("fora do if");
                             if (request.getAttribute("Lista") != null) {
                                 System.out.println("Dentro do if");
-                                List<Produto> lista = (List) request.getAttribute("Lista");
-                                for (Produto po : lista) {
+                                List<Usuario> lista = (List) request.getAttribute("Lista");
+                                for (Usuario us: lista) {
                         %>
                         <tr>
-                            <td><%=po.getNome_produto()%></td>
-                            <td><%=po.getPreco()%></td>
-                            <td><%=po.getData_cadastro()%></td>
-
+                            <td><%=us.getNome_usuario() %></td>
+                            <td><%=us.getEmail() %></td>
+                            <td><%=us.getData_nascimento() %> </td>
                         </tr>
 
                         <%

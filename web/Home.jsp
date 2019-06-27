@@ -25,6 +25,7 @@
             <div class="col s3">
                 <br>
                 <img src="./img/<%=produto.getFoto()%>" width="300px" height="300px">
+                <br>
                 <a href="ProdutoControle?metodo=visualizarProduto&id_produto=<%=produto.getId_produto()%>"<h5><%= produto.getNome_produto()%></h5></a>
                     <h6><%= produto.getDescricao()%></h6>
                     <h6>R$ <%= produto.getPreco()%></h6>
